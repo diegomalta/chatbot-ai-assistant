@@ -128,3 +128,20 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# TeamsFx files
+env/.env.*.user
+env/.env.local
+.localConfigs.testTool
+.localConfigs
+.notification.localstore.json
+.notification.testtoolstore.json
+appPackage/build
+
+# misc
+.env
+.deployment
+.DS_Store
+
+# build
+lib/
