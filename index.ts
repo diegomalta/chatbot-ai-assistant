@@ -8,11 +8,14 @@ import {
   ConfigurationServiceClientCredentialFactory,
   ConfigurationBotFrameworkAuthentication,
   TurnContext,
+  MemoryStorage,
+  ConversationState,
+  UserState
 } from "botbuilder";
-
-// This bot's main dialog.
-import { TeamsBot } from "./teamsBot";
+import { ChatOpenAI } from "@langchain/openai";
 import config from "./config";
+import { MainDialog } from "./dialogs/mainDialog";
+import { DialogBot } from "./bots/dialogBot";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -52,8 +55,17 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
 // Set the onTurnError for the singleton CloudAdapter.
 adapter.onTurnError = onTurnErrorHandler;
 
-// Create the bot that will handle incoming messages.
-const bot = new TeamsBot();
+console.log(config.openAIApiKey);
+const model = new ChatOpenAI({
+  modelName: "gpt-3.5-turbo-1106",
+  openAIApiKey: config.openAIApiKey
+});
+
+const memoryStorage = new MemoryStorage();
+const conversationState = new ConversationState(memoryStorage);
+const userState = new UserState(memoryStorage);
+const dialog = new MainDialog(userState, model);
+const bot = new DialogBot(conversationState, userState, dialog);
 
 // Create HTTP server.
 const server = restify.createServer();
