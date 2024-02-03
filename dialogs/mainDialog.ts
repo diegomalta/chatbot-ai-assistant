@@ -1,7 +1,9 @@
 import { StatePropertyAccessor, TurnContext, UserState } from "botbuilder";
 import { ChoicePrompt, ComponentDialog, DialogSet, DialogTurnStatus, WaterfallDialog, WaterfallStepContext } from "botbuilder-dialogs";
 import { ChatOpenAI } from "@langchain/openai";
+// Dialogs
 import { MainEmailDialog, EMAIL_DIALOG } from "./emailDialog/mainEmailDialog";
+import { MainWebDialog, WEB_DIALOG } from "./webDialog/mainWebDialog";
 
 const MAIN_DIALOG = 'MAIN_DIALOG';
 const CHOICE_PROMPT = 'CHOICE_PROMPT';
@@ -14,6 +16,7 @@ export class MainDialog extends ComponentDialog {
 
     this.addDialog(new ChoicePrompt(CHOICE_PROMPT));
     this.addDialog(new MainEmailDialog(userState, model));
+    this.addDialog(new MainWebDialog(userState, model));
 
     this.addDialog(new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
       this.initialStep.bind(this),
@@ -51,6 +54,9 @@ export class MainDialog extends ComponentDialog {
     if (stepContext.result.value === 'email')
       return await stepContext.beginDialog(EMAIL_DIALOG);
 
+    if (stepContext.result.value === 'web')
+      return await stepContext.beginDialog(WEB_DIALOG);
+
     return await stepContext.endDialog();
   }
 
@@ -68,6 +74,10 @@ export class MainDialog extends ComponentDialog {
         {
           synonyms: ['email helper'],
           value: 'email'
+        },
+        {
+          synonyms: ['web helper'],
+          value: 'web'
         }
     ];
 

@@ -4,7 +4,6 @@ import { StringOutputParser } from "@langchain/core/output_parsers";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { EmailDetails } from "./emailDetails";
 
-
 export const COMPOSER_EMAIL_DIALOG = 'COMPOSER_EMAIL_DIALOG';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 const CHOICE_PROMPT = 'CHOICE_PROMPT';
