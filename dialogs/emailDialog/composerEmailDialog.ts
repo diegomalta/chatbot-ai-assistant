@@ -13,7 +13,10 @@ export class ComposerEmailDialog extends ComponentDialog {
   private outputParser: StringOutputParser;
   private model: ChatOpenAI;
   private prompt = ChatPromptTemplate.fromMessages([
-    ["system", "You are an expert email writer who guarantees that all emails are precise, grammatically correct, and easy to understand. The user will provide the type of formality and the email text to be corrected; your work is to analyze and fix the provided email."],
+    ["system", `You are an expert email writer who 
+                guarantees that all emails are precise, grammatically correct, and easy to understand. 
+                The user will provide the type of formality and the email text to be corrected; 
+                your work is to analyze and fix the provided email.`],
     ["user", "Formality: {formality}, email: {email}"]
   ]);
 

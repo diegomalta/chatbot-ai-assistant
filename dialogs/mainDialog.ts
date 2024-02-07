@@ -51,10 +51,10 @@ export class MainDialog extends ComponentDialog {
 
   public async selectionStep(stepContext: WaterfallStepContext) {
     console.log(stepContext.result.value);
-    if (stepContext.result.value === 'email')
+    if (stepContext.result.value === 'email helper')
       return await stepContext.beginDialog(EMAIL_DIALOG);
 
-    if (stepContext.result.value === 'web')
+    if (stepContext.result.value === 'RAG from web')
       return await stepContext.beginDialog(WEB_DIALOG);
 
     return await stepContext.endDialog();
@@ -73,11 +73,11 @@ export class MainDialog extends ComponentDialog {
     const cardOptions = [
         {
           synonyms: ['email helper'],
-          value: 'email'
+          value: 'email helper'
         },
         {
-          synonyms: ['web helper'],
-          value: 'web'
+          synonyms: ['RAG from web'],
+          value: 'RAG from web'
         }
     ];
 

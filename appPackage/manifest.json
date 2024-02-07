@@ -5,10 +5,10 @@
     "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
-        "name": "Teams App, Inc.",
-        "websiteUrl": "https://www.example.com",
-        "privacyUrl": "https://www.example.com/termofuse",
-        "termsOfUseUrl": "https://www.example.com/privacy"
+        "name": "Diego Malta.",
+        "websiteUrl": "https://github.com/diegomalta/chatbot-ai-assistant",
+        "privacyUrl": "https://github.com/diegomalta/chatbot-ai-assistant",
+        "termsOfUseUrl": "https://github.com/diegomalta/chatbot-ai-assistant"
     },
     "icons": {
         "color": "color.png",
@@ -19,8 +19,8 @@
         "full": "full name for chatbot-ai-assistant"
     },
     "description": {
-        "short": "short description for chatbot-ai-assistant1",
-        "full": "full description for chatbot-ai-assistant1"
+        "short": "chatbot-ai-assistant",
+        "full": "chatbot-ai-assistant"
     },
     "accentColor": "#FFFFFF",
     "bots": [
