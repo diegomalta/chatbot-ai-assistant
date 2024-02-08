@@ -17,7 +17,7 @@ export class ComposerEmailDialog extends ComponentDialog {
                 guarantees that all emails are precise, grammatically correct, and easy to understand. 
                 The user will provide the type of formality and the email text to be corrected; 
                 your work is to analyze and fix the provided email.`],
-    ["user", "Formality: {formality}, email: {email}"]
+    ["human", "Formality: {formality}, email: {email}"]
   ]);
 
   constructor(model: ChatOpenAI) {

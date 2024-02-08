@@ -1,8 +1,6 @@
 import { StatePropertyAccessor, UserState } from "botbuilder";
 import { ChoicePrompt, ComponentDialog, TextPrompt, WaterfallDialog, WaterfallStepContext } from "botbuilder-dialogs";
 import { ChatOpenAI } from "@langchain/openai";
-import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { StringOutputParser } from "@langchain/core/output_parsers";
 import { COMPOSER_EMAIL_DIALOG, ComposerEmailDialog} from './composerEmailDialog';
 import { EmailDetails } from "./emailDetails";
 
