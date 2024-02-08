@@ -9,6 +9,7 @@ import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { createRetrievalChain } from "langchain/chains/retrieval";
 import { Document } from "@langchain/core/documents";
+import { StringOutputParser } from "@langchain/core/output_parsers";
 
 export const WEB_DIALOG = 'WEB_DIALOG';
 const WEB_TEXT_PROMPT = 'WEB_TEXT_PROMPT';
@@ -97,7 +98,8 @@ export class MainWebDialog extends ComponentDialog {
       {context}
       </context>
     
-      Question: {input}`)
+      Question: {input}`),
+      outputParser: new StringOutputParser()
     });
 
     const retriever = this.vectorstore.asRetriever();
@@ -119,7 +121,4 @@ export class MainWebDialog extends ComponentDialog {
   private async finalStep(stepContext: WaterfallStepContext) {
     return await stepContext.endDialog();
   }
-
-
-
 }
